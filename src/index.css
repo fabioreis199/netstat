@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(210 40% 98%);
+  --color-foreground: hsl(222 47% 11%);
+  --radius: 0.75rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  border-color: hsl(214 32% 91%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: hsl(210 40% 98%);
+  color: hsl(222 47% 11%);
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
