@@ -2,7 +2,7 @@
 source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
 
 APP="NetStat"
-var_tags="proxmox|monitoring"
+var_tags="proxmox-monitoring"
 var_cpu="1"
 var_ram="256"
 var_disk="1"
