@@ -6,7 +6,18 @@ set -e
 
 # Configuration
 LXC_NAME="netstat"
-LXC_ID="130"
+# Find next available LXC ID
+find_next_id() {
+    local used_ids
+    used_ids=$(pct list 2>/dev/null | awk 'NR>1 {print $1}' | sort -n)
+    local id=100
+    while echo "$used_ids" | grep -q "^${id}$"; do
+        ((id++))
+    done
+    echo $id
+}
+
+LXC_ID=$(find_next_id)
 LXC_RAM="256"
 LXC_CORES="1"
 LXC_ROOT="1"
