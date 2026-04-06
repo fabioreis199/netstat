@@ -14,6 +14,8 @@ variables
 color
 catch_errors
 
+function update_script() { msg_ok "No updates available"; exit; }
+
 start
 build_container
 
