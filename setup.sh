@@ -28,8 +28,39 @@ function update_script() {
   exit
 }
 
+function custom_settings() {
+  header_info
+  # Set variables for post-install
+  export ct_type="1"
+  export features="nesting=1,keyctl=1"
+}
+
 start
 build_container
+
+# Post-install: Install and run NetStat
+msg_info "Installing NetStat dependencies..."
+ pct exec $CTID -- apk add --no-cache nodejs npm git curl
+
+msg_info "Cloning NetStat repo..."
+ pct exec $CTID -- bash -c "mkdir -p /opt && cd /opt && git clone https://github.com/fabioreis199/netstat.git netstat"
+
+msg_info "Building UI..."
+ pct exec $CTID -- bash -c "cd /opt/netstat/netstat && npm install && npm run build"
+
+msg_info "Installing API..."
+ pct exec $CTID -- bash -c "cd /opt/netstat/homeboard && npm install"
+
+msg_info "Creating startup script..."
+ pct exec $CTID -- bash -c "cat > /opt/start.sh << 'STARTEOF'
+#!/bin/sh
+cd /opt/netstat/homeboard
+PROXMOX_HOST=192.168.1.199 PROXMOX_TOKEN_USER=root@pam PROXMOX_TOKEN_SECRET=a4f4b012-8211-4786-bf8e-51ccd1f3af3f node server.cjs
+STARTEOF
+chmod +x /opt/start.sh"
+
+msg_info "Starting NetStat..."
+ pct exec $CTID -- /opt/start.sh &
 
 description
 msg_ok "Completed successfully!\n"
