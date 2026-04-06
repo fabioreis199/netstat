@@ -6,8 +6,8 @@ var_tags="proxmox-monitoring"
 var_cpu="1"
 var_ram="256"
 var_disk="1"
-var_os="alpine"
-var_version="3.20"
+var_os="debian"
+var_version="12"
 
 header_info "$APP"
 variables
@@ -18,7 +18,7 @@ start
 build_container
 
 msg_info "Installing dependencies..."
-pct exec $CTID -- apk add --no-cache nodejs-lts npm git curl
+pct exec $CTID -- bash -c "apt-get update && apt-get install -y nodejs npm git curl"
 
 msg_info "Cloning NetStat..."
 pct exec $CTID -- bash -c "mkdir -p /opt && cd /opt && git clone https://github.com/fabioreis199/netstat.git"
