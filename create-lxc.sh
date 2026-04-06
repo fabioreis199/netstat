@@ -10,7 +10,7 @@ LXC_NAME="netstat"
 find_next_id() {
     local used_ids
     used_ids=$(pct list 2>/dev/null | awk 'NR>1 {print $1}' | sort -n)
-    local id=100
+    local id=131
     while echo "$used_ids" | grep -q "^${id}$"; do
         ((id++))
     done
