@@ -20,7 +20,9 @@ start
 build_container
 
 msg_info "Installing dependencies..."
-pct exec $CTID -- bash -c "apt-get update && apt-get install -y nodejs npm git curl"
+pct exec $CTID -- bash -c "apt-get update && apt-get install -y curl
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt-get install -y nodejs git"
 
 msg_info "Cloning NetStat..."
 pct exec $CTID -- bash -c "mkdir -p /opt && cd /opt && git clone https://github.com/fabioreis199/netstat.git"
