@@ -7,9 +7,9 @@ set -e
 # Configuration
 LXC_NAME="netstat"
 LXC_ID="130"
-LXC_RAM="512"
+LXC_RAM="256"
 LXC_CORES="1"
-LXC_ROOT="2"
+LXC_ROOT="1"
 GIT_REPO="https://github.com/fabioreis199/netstat.git"
 API_TOKEN="your-proxmox-api-token-here"
 PROXMOX_HOST="192.168.1.199"
