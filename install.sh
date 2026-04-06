@@ -5,7 +5,7 @@ APP="NetStat"
 var_tags="proxmox-monitoring"
 var_cpu="1"
 var_ram="256"
-var_disk="1"
+var_disk="3"
 var_os="debian"
 var_version="12"
 
