@@ -18,7 +18,7 @@ start
 build_container
 
 msg_info "Installing NetStat..."
-pct exec $CTID -- apk add --no-cache nodejs npm git curl
+pct exec $CTID -- apk add --no-cache nodejs-lts npm git curl
 pct exec $CTID -- bash -c "mkdir -p /opt && cd /opt && git clone https://github.com/fabioreis199/netstat.git"
 pct exec $CTID -- bash -c "cd /opt/netstat && npm install && npm run build"
 pct exec $CTID -- bash -c "cat > /opt/start.sh << 'STARTEOF'
