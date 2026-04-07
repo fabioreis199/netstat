@@ -86,7 +86,7 @@ interface VMDetails {
   }
 }
 
-const API_BASE = 'http://192.168.1.18:3001/api/proxmox'
+const API_BASE = 'http://192.168.1.57:3001/api/proxmox'
 
 function statusVariant(status: string) {
   if (status === 'running' || status === 'online') return 'success' as const
