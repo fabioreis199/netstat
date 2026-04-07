@@ -28,7 +28,7 @@ msg_info "Cloning NetStat..."
 pct exec $CTID -- bash -c "mkdir -p /opt && cd /opt && git clone https://github.com/fabioreis199/netstat.git"
 
 msg_info "Building UI..."
-pct exec $CTID -- bash -c "cd /opt/netstat && rm -rf node_modules package-lock.json && npm install && npm run build"
+pct exec $CTID -- bash -c "cd /opt/netstat && rm -rf node_modules package-lock.json && npm install && npm install express cors dotenv && npm run build"
 
 msg_info "Creating startup script..."
 pct exec $CTID -- bash -c "cat > /opt/start.sh << 'STARTEOF'
